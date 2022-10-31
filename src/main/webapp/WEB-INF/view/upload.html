@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+	</head>
+	<body>
+
+		<div class="content" style="margin-top: 20%;">
+			<form th:action="@{'/blog/uploadBlog/'+${session.loginUser.registerUsername}}" method="post"
+				enctype="multipart/form-data" style="text-align: center;margin:auto;" onsubmit="greeting()">
+				<input type="text" name="blogTitle" required placeholder="博客标题"
+					style="width: 250px;height: 50px;" /><br />
+				<textarea cols="35" name="blogText" rows="5" required placeholder="博客介绍100字以内"></textarea><br />
+				<input type="submit" value="上传" style="margin-left: 150px;" id="closes" />
+				<input type="file" id="upload" name="upload" required style="margin: 0 auto;" />
+
+			</form>
+			</form>
+		</div>
+		<script src="../../static/js/jquery-1.8.2.min.js"></script>
+		<script src="../../static/js/layer/layer.js"></script>
+		<script type="text/javascript">
+			function greeting() {
+				
+				// layer.msg("保存成功"); //提示信息
+				setTimeout(function() { //设置定时器
+					parent.location.reload(true); //刷新父级页面
+					var index = parent.layer.getFrameIndex(window.name);
+					console.log(index)
+					//获取当前弹窗的Id
+					parent.layer.close(index);
+					//关闭
+				},2000);
+
+			}
+			//隐藏iframe
+			// var index = parent.layer.getFrameIndex(window.name);
+			// var success = '{sh:$success}';
+			// if (success == '1') {
+			// 	parent.$("#handle_status").val('1');
+			// 	parent.layer.close(index);
+			// } else if (success == '2') {
+			// 	parent.$("#handle_status").val('2');
+			// 	parent.layer.close(index);
+			// }
+			// console.log(success)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" style="height: 100%">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="../../static/css/index.css">
+		<link rel="stylesheet" href="../../static/css/bg.css">
+	</head>
+	<body style="height: 100%">
+		<div id="app" style="height: 100%">
+<!--			<a th:href="@{/}">-->
+<!--				<img src="../../static/images/home.svg" alt="">-->
+<!--			</a>-->
+			<el-container>
+				<el-main>
+					<div id="titles">Blogs</div>
+					<div id="intrduce">一个精简的博客网站</div>
+					<el-row style="line-height: 10px;">
+						<el-button type="success" round>
+							 <el-link  href="#app2" class="link-r">登录</el-link>
+							
+						</el-button>
+						<el-button type="info" round>
+							<el-link type="warning" th:href="@{/square/}">广场</el-link>
+						</el-button>
+						<el-button type="warning" round>
+							<el-link href="#app2">注册</el-link>
+						</el-button>
+					</el-row>
+					<span id="sbTitle"></span>
+				</el-main>
+			</el-container>
+
+		</div>
+
+		<div class="marges"></div>
+
+		<div id="app2">
+			<el-tabs type="border-card" class="register-top">
+				<el-tab-pane label="登录" class="register">
+					<div class="loginBox">
+							<form th:action="@{/register}" method="post">
+								<div class="item">
+									<input type="text" id="registerUsername" name="registerUsername" required>
+									<label for="registerUsername" >userName</label>
+								</div>
+								<div class="item">
+									<input type="password" id="registerPassword" name="registerPassword" required>
+									<label for="registerPassword">password</label>
+								</div>
+								<button class="btn">submit
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+								</button>
+							</form>
+						</div>
+					
+				</el-tab-pane>
+				
+				
+				<el-tab-pane label="注册" class="register">
+					<div class="loginBox" style="height: 500px;">
+							<form th:action="@{/login}" method="post">
+								<div class="item">
+									<input type="text" name="registerUsername" required>
+									<label for="registerUsername">userName</label>
+								</div>
+								<div class="item">
+									<input type="password" name="registerPassword" required>
+									<label for="registerPassword">password</label>
+								</div>
+								<div class="item">
+									<input type="text" name="registerPassword2" required>
+									<label >password2</label>
+								</div>
+								<div class="item">
+									<input type="text" name="email" required>
+									<label >email</label>
+								</div>
+								<button class="btn">submit
+									<span></span>
+									<span></span>
+									<span></span>
+									<span></span>
+								</button>
+							</form>
+						</div>
+					
+				</el-tab-pane>
+				
+			</el-tabs>
+		</div>
+		<div style="height: 10%;">
+			
+		</div>
+		
+		<script src=" ../../static/js/vue.js"></script>
+		<!-- 引入组件库 -->
+		<script src="../../static/js/index.js"></script>
+		<!-- 打字机 -->
+		<script src="../../static/js/typed.js"></script>
+		<script src="../../static/js/jquery-1.8.2.min.js"></script>
+		<script src="../../static/js/axios.min.js"></script>
+	</body>
+	<script type="text/javascript">
+		new Vue().$mount('#app')
+		
+		new Vue().$mount('#app2')
+
+		var typed = new Typed("#sbTitle", {
+			strings: ['stay hungry stay foolish ❤❤ ❤❤', 'good good study,day day up！!'],
+			startDelay: 0,
+			typeSpeed: 100,
+			backSpeed: 100,
+			loop: true,
+			showCursor: true,
+			shuffle: false
+		});
+		
+	</script>
+</html>

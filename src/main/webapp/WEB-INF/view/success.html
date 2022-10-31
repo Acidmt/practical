@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<link rel="stylesheet" type="text/css" href="../../static/css/index.css">
+		<link rel="stylesheet" type="text/css" href="../../static/css/plugins.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/colors.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/darkMode.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/animate.min.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+			rel="stylesheet">
+		<link
+			href="https://fonts.googleapis.com/css?family=Montserrat:200i,300,300i,400,400i,500,500i,600,700,700i,800&amp;display=swap"
+			rel="stylesheet">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+			rel="stylesheet">
+	</head>
+	<body>
+		<div class="arlo_tm_preloader">
+			<div class="spinner_wrap">
+				<div class="spinner"></div>
+			</div>
+		</div>
+		<div class="arlo_tm_all_wrap" data-magic-cursor="" data-color="crimson">
+			<div class="arlo_tm_modalbox_news">
+				<div class="box_inner">
+					<div class="close"><a href="#"><img class="svg" src="../../static/images/svg/cancel.svg"
+								alt="" /></a></div>
+					<div class="description_wrap scrollable"></div>
+				</div>
+			</div>
+			<div class="arlo_tm_mobile_menu">
+				<div class="mobile_menu_inner">
+					<div class="container">
+						<div class="mobile_in">
+							<div class="logo"><a href="#"><img src="../../static/images/logo/mobile/dark.png"
+										alt="" /></a></div>
+							<div class="my_trigger">
+								<div class="hamburger hamburger--collapse-r">
+									<div class="hamburger-box">
+										<div class="hamburger-inner"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="dropdown">
+					<div class="container">
+						<div class="dropdown_inner">
+							<ul class="anchor_nav">
+								<li class="current"><a href="#home">主页</a></li>
+								<li><a href="#about">博客</a></li>
+								<li><a th:href="@{/square/}">广场</a></li>
+								<li><a href="#portfolio">博客上传</a></li>
+								<li><a th:href="@{/blog/logout}">退出登录</a></li>
+								<li><a href="#contact"></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="arlo_tm_topbar">
+				<div class="container">
+					<div class="topbar_inner">
+						<div class="logo"><a th:href="@{/}"><img class="light"
+									src="../../static/images/logo/classic/light.png" alt="" /></a><a href="#"><img
+									class="dark" src="../../static/images/logo/classic/dark.png" alt="" /></a></div>
+						<div class="menu">
+							<ul class="anchor_nav">
+								<li class="current"><a href="#home">主页</a></li>
+								<li><a href="#about">博客</a></li>
+								<li><a th:href="@{/square/}">广场</a></li>
+								<li><a href="javascript:;" id="blogUplod">博客上传</a></li>
+								<li><a th:href="@{/blog/logout}">退出登录</a></li>
+								<li><a href="#contact"></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="arlo_tm_hero" id="home">
+				<div class="background">
+					<div class="image" data-img-url="../../static/images/slider/1.jpg"></div>
+					<div class="overlay"></div>
+				</div>
+				<div class="content">
+					<div class="image_wrap">
+						<div class="main" id="imgs" data-img-url="https://images.unsplash.com/photo-1652758978641-9fad66f4fa01?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735">
+						</div>
+					</div>
+					<div class="name_holder">
+						<h3>你好！<span th:text="${session.loginUser.registerUsername}"></span></h3>
+					</div>
+					<div class="text_typing">
+						<p><span class="arlo_tm_animation_text_word"></span>|</p>
+					</div>
+				</div>
+				<div class="arlo_tm_arrow_wrap bounce anchor"> <a href="#about"><i
+							class="xcon-angle-double-down"></i></a> </div>
+			</div>
+			<div class="arlo_tm_about" id="about">
+				<div class="container">
+					<div class="arlo_tm_main_title"> <span>Blogs</span>
+						<h3>About Blog</h3>
+					</div>
+					<!--					博客面板-->
+					<div th:each="blogPathMessage:${BlogPathMessage}">
+						<div class="about_inner">
+							<div class="left">
+								<div class="about_image_wrap parallax" data-relative-input="true">
+									<div class="image layer" data-depth="0.1"> <img
+											src="../../static/images/ratios/550x650.jpg" alt="" />
+										<div class="inner" data-img-url="">
+										</div>
+									</div>
+									<div class="border layer" data-depth="0.2"> <img
+											src="../../static/images/ratios/550x650.jpg" alt="" />
+										<div class="inner"></div>
+									</div>
+								</div>
+							</div>
+							<div class="right">
+								<div class="about_title app">
+									<h2 th:text="${blogPathMessage.value.getBlogTitle}"></h2>
+									<h3>I'm <span th:text="${session.loginUser.registerUsername}"></span> and <span
+											class="arlo_tm_animation_text_word"></span>
+										<!-- <a href="#" style="float: right;">点击删除</a> -->
+										<el-dropdown @command="handleCommand">
+											<span class="el-dropdown-link">
+												编辑<i class="el-icon-arrow-down el-icon--right"></i>
+											</span>
+											<el-dropdown-menu slot="dropdown">
+												<el-dropdown-item>
+													<el-button type="text" @click="openDelete"><a
+															th:href="@{'/blog/delete/'+${blogPathMessage.key.getBlogId}+'/'+${blogPathMessage.value.getBlogId}}">删除</a>
+													</el-button>
+												</el-dropdown-item>
+												<el-dropdown-item>
+													<el-button type="text" @click="openAlter">修改</el-button>
+												</el-dropdown-item>
+											</el-dropdown-menu>
+										</el-dropdown>
+									</h3>
+
+								</div>
+								<div class="text">
+									<p th:text="${blogPathMessage.value.getBlogData}">
+									<p th:text="${blogPathMessage.value.getBlogMessage}"></p>
+								</div>
+								<div class="about_short_contact_wrap">
+
+								</div>
+								<div class="arlo_tm_button"> <a
+										th:href="@{'/blog/'+${blogPathMessage.key.getBlogPathPath}}"
+										style="background-color: #67c23a !important;"><span>点击查看笔记->></span></a> </div>
+							</div>
+						</div>
+						<hr style="height:1px;width: 95%; border:none;margin-top: 2%; border-top:1px dashed #0066CC;" />
+					</div>
+				</div>
+			</div>
+			<div class="arlo_tm_section">
+				<div class="arlo_tm_copyright">
+					<div class="container">
+						<div class="inner">
+							<div class="copy wow fadeInLeft" data-wow-duration="1.5s">
+								<p>&copy;Copyright 2019-2021. All rights are By <a th:href="@{/}">Acid.Stephen.Boer</a>.
+								</p>
+							</div>
+							<div class="social wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s">
+								<ul>
+									<li><a href="#"><img class="svg" src="../../static/images/svg/social/facebook.svg"
+												alt="" /></a>
+									</li>
+									<li><a href="#"><img class="svg" src="../../static/images/svg/social/twitter.svg"
+												alt="" /></a></li>
+									<li><a href="#"><img class="svg" src="../../static/images/svg/social/behance.svg"
+												alt="" /></a></li>
+									<li><a href="#"><img class="svg" src="../../static/images/svg/social/dribbble.svg"
+												alt="" /></a>
+									</li>
+									<li><a href="#"><img class="svg" src="../../static/images/svg/social/tik-tok.svg"
+												alt="" /></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mouse-cursor cursor-outer"></div>
+		<div class="mouse-cursor cursor-inner"></div>
+		<input id="handle_status" value="" hidden="hidden">
+		<script src=" ../../static/js/vue.js"></script>
+		<!-- 引入组件库 -->
+		<script src="../../static/js/index.js"></script>
+		<script src="../../static/js/jquery-1.8.2.min.js"></script>
+		<script src="../../static/js/plugins.js"></script>
+		<script src="../../static/js/init.js"></script>
+		<script src="../../static/js/axios.min.js"></script>
+		<script src="../../static/js/layer/layer.js"></script>
+		<script async defer
+			src="http://www.google.cn/maps/api/js?key=AIzaSyA5bpEs3xlB8vhxNFErwoo3MXR64uavf6Y&amp;callback=initMap">
+		</script>
+
+		<script type="text/javascript">
+			var Main = {
+				methods: {
+					openDelete() {
+						// this.$message('click on item ' + command);
+						this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+							confirmButtonText: '确定',
+							cancelButtonText: '取消',
+							type: 'warning'
+						}).then(() => {
+							this.$message({
+								type: 'success',
+								message: '删除成功!',
+
+							})
+							// this.$router.replace("@{'/blog/delete/'+${blogPathMessage.key.getBlogId}+'/'+${blogPathMessage.value.getBlogId}}")
+							// .then(function o2() {
+							// 	$.axios(
+							// 		"@{'/blog/delete/'+${blogPathMessage.key.getBlogId}+'/'+${blogPathMessage.value.getBlogId}}"
+							// 		)
+							// })
+						}).catch(() => {
+							this.$message({
+								type: 'info',
+								message: '已取消删除'
+							});
+						});
+					},
+					openAlter() {
+						this.$confirm('您将要修改次博客, 是否继续?', '提示', {
+							confirmButtonText: '确定',
+							cancelButtonText: '取消',
+							type: 'warning',
+						}).then(() => {
+							this.$message({
+								type: 'success',
+								message: 'localhost:8080 404!!'
+
+							});
+						}).catch(() => {
+							this.$message({
+								type: 'info',
+								message: '已取消修改'
+							});
+						});
+					}
+				}
+			}
+			var Ctor = Vue.extend(Main)
+			var apps = document.querySelectorAll('.app')
+			$("#blogUplod").click(function() {
+				layer.open({
+					title: '上传',
+					type: 2,
+					area: ['700px', '530px'],
+					fix: false, //不固定
+					maxmin: true,
+					content: 'http://localhost:8080/blog/blogUplod',
+					success: function(layero, index) {},
+					end: function() {
+						var handle_status = $("#handle_status").val();
+						if (handle_status == '1') {
+							layer.msg('添加成功！', {
+								icon: 1,
+								time: 2000 //2秒关闭（如果不配置，默认是3秒）
+							}, function() {
+								history.go(0);
+							});
+						} else if (handle_status == '2') {
+							layer.msg('添加失败！', {
+								icon: 2,
+								time: 2000 //2秒关闭（如果不配置，默认是3秒）
+							}, function() {
+								history.go(0);
+							});
+						}
+					}
+				});
+			})
+			
+			for (var i = 0; i < apps.length; i++) {
+				new Ctor().$mount(apps[i])
+			}
+			
+			//头像动画
+			$('#imgs').mousemove(function(){
+				$(this).addClass('animate__hinge');
+			});
+			$('#imgs').mouseover(function(){
+				$(this).removeClass('animate__hinge')
+			})
+			
+			window.onload=function(){
+				var width=document.body.scrollWidth
+				var left=document.querySelectorAll('.left')
+				if(width<1080){
+					for(var i=0;i<left.length;i++){
+						left[i].setAttribute('style','display:none')
+					}
+					
+				}
+			}
+		</script>
+	</body>
+</html>

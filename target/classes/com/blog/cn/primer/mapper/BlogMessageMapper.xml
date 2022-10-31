@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blog.cn.primer.mapper.BlogMessageMapper">
+    <insert id="addMessage" parameterType="BlogMessagePojo">
+        INSERT INTO register_blogMessage (blog_title,blog_message)
+        VALUES (#{blogTitle},#{blogMessage})
+    </insert>
+    <delete id="deleteMessage" parameterType="int">
+        delete from register_blogMessage where blog_ids =#{blogIds}
+    </delete>
+
+    <update id="updateMessage" parameterType="BlogMessagePojo">
+        update register_blogMessage
+        <trim prefix="set" suffixOverrides=",">
+            <if test="blogTitle != null and blogTitle != ''">
+                blog_title = #{blogTitle},
+            </if>
+
+            <if test="blogMessage != null and blogMessage != ''">
+                blog_message = #{blogMessage}
+            </if>
+
+        </trim>
+    </update>
+
+    <select id="selectById" resultType="BlogMessagePojo">
+        select * from register_blogMessage where blog_ids =#{blogIds}
+    </select>
+
+    <select id="selectByIdEach" resultType="BlogMessagePojo">
+        select * from register_blogMessage where
+        <foreach collection="array"  item="blogIds" separator="or">
+            blog_ids = #{blogIds}
+        </foreach>
+
+    </select>
+
+    <select id="selectAllMessage" resultType="BlogMessagePojo">
+        select * from register_blogMessage
+    </select>
+
+</mapper>

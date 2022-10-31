@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<!-- 引入样式 -->
+		<link rel="stylesheet" type="text/css" href="../../static/css/colors.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/plugins.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/darkMode.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+				border: 0;
+				outline: 0;
+				list-style: none;
+				text-decoration: none;
+				background: none;
+				background-color: black;
+			}
+			.blog-body {
+				width: 70%;
+				margin: 100px auto;
+				background-color: rgba(255, 255, 255, 0.92);
+				z-index: 20;
+				border-radius: 35px;
+				box-shadow: 0 0 20px 10px rgb(220 220 220 / 30%);
+			}
+			.blog-body:after{
+				clear: both;
+				    content:" ";
+				    display: block;
+				    width:0;
+				    height: 0;
+				    visibility: hidden;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="arlo_tm_mobile_menu">
+		<div class="mobile_menu_inner">
+			<div class="container">
+				<div class="mobile_in">
+					<div class="logo"><a href="#"><img src="../../static/images/logo/mobile/dark.png"
+													   alt="" /></a></div>
+					<div class="my_trigger">
+						<div class="hamburger hamburger--collapse-r">
+							<div class="hamburger-box">
+								<div class="hamburger-inner"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="dropdown">
+			<div class="container">
+				<div class="dropdown_inner">
+					<ul class="anchor_nav" th:if="${session.loginUser}">
+						<li><a th:href="@{/}">主页</a></li>
+						<li><a th:href="@{/}+'#about'">博客</a></li>
+						<li><a th:href="@{/square/}">广场</a></li>
+						<li><a href="javascript:;" id="blogUplod">博客上传</a></li>
+						<li><a th:href="@{/square/logout}">退出登录</a></li>
+						<li><a href="#contact"></a></li>
+					</ul>
+					<ul class="anchor_nav" th:unless="${session.loginUser}">
+						<li><a th:href="@{/}">登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="arlo_tm_topbar">
+		<div class="container">
+			<div class="topbar_inner">
+				<div class="logo"><a th:href="@{/}"><img class="light"
+														 src="../../static/images/logo/classic/light.png" alt="" /></a><a href="#"><img
+						class="dark" src="../../static/images/logo/classic/dark.png" alt="" /></a></div>
+				<div class="menu">
+					<ul class="anchor_nav" th:if="${session.loginUser}">
+						<li><a th:href="@{/}">主页</a></li>
+						<li><a th:href="@{/}+'#about'">博客</a></li>
+						<li><a th:href="@{/square/}">广场</a></li>
+						<li><a href="javascript:;" id="blogUplod">博客上传</a></li>
+						<li><a th:href="@{/square/logout}">退出登录</a></li>
+						<li><a href="#contact"></a></li>
+					</ul>
+					<ul class="anchor_nav" th:unless="${session.loginUser}">
+						<li><a th:href="@{/}">登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="blog-body">
+			<div class="arlo_tm_about" style="padding-top: 40px;">
+				<div class="container">
+					<div class="arlo_tm_main_title"> <span>SQUARE</span>
+						<h3>Welcome you here
+						<span th:text="${session?.loginUser?.registerUsername}" style="color: #e65f78;" ></span>
+						</h3>
+					</div>
+					<!--					博客面板-->
+					<div th:each="blogPathMessages:${BlogPathMessages}">
+						<div class="about_inner">
+							<div class="left">
+								<div class="about_image_wrap parallax" data-relative-input="true">
+									<div class="image layer" data-depth="0.1"> <img
+											src="../../static/images/ratios/550x650.jpg" alt="" />
+										<div class="inner" data-img-url="">
+										</div>
+									</div>
+									<div class="border layer" data-depth="0.2"> <img
+											src="../../static/images/ratios/550x650.jpg" alt="" />
+										<div class="inner"></div>
+									</div>
+								</div>
+							</div>
+							<div class="right">
+								<div class="about_title app">
+									<h2 th:text="${blogPathMessages.value.getBlogTitle}"></h2>
+									
+			
+								</div>
+								<div class="text">
+									<p th:text="${blogPathMessages.value.getBlogData}">
+									<p th:text="${blogPathMessages.value.getBlogMessage}"></p>
+								</div>
+								<div class="about_short_contact_wrap">
+			
+								</div>
+								<div class="arlo_tm_button"> <a
+										th:href="@{'/blog/'+${blogPathMessages.key.getBlogPathPath}}"
+										style="background-color: #67c23a !important;"><span>点击查看笔记->></span></a> </div>
+							</div>
+						</div>
+						<hr style="height:1px;width: 95%; border:none;margin-top: 2%; border-top:1px dashed #0066CC;" />
+						
+					</div>
+				</div>
+			</div>
+			</div>
+
+		</div>
+		<!-- 引入组件库 -->
+		<script src="../../static/js/jquery-1.8.2.min.js"></script>
+		<script src="../../static/js/plugins.js"></script>
+		<script src="../../static/js/init.js"></script>
+		<script >
+			window.onload=function(){
+				var width=document.body.scrollWidth
+				var left=document.querySelectorAll('.left')
+				if(width<1080){
+					for(var i=0;i<left.length;i++){
+						left[i].setAttribute('style','display:none')
+					}
+					
+				}
+			}
+			
+		</script>
+	</body>
+</html>

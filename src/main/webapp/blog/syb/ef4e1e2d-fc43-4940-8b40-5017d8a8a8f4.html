@@ -1,0 +1,603 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(224, 63, 63); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: rgb(148,129,141);
+    text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+        border-left: 4px solid #70288e91;
+    padding: 0 15px;
+    color: #777777;
+    background-color: #94818D21;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>鲲鹏软件迁移实践</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#鲲鹏软件迁移实践">鲲鹏软件迁移实践</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#一-概述">一. 概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n19"><a class="md-toc-inner" href="#二-软件迁移五大步骤">二. 软件迁移五大步骤</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n20"><a class="md-toc-inner" href="#1-迁移准备">1. 迁移准备</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n39"><a class="md-toc-inner" href="#2-迁移分析">2. 迁移分析</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n47"><a class="md-toc-inner" href="#3-编译迁移">3. 编译迁移</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n55"><a class="md-toc-inner" href="#4-性能调优">4. 性能调优</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n63"><a class="md-toc-inner" href="#5-测试与认证">5. 测试与认证</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n81"><a class="md-toc-inner" href="#三-cc代码迁移">三. C/C++代码迁移</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n82"><a class="md-toc-inner" href="#1-编译型源码-可执行程序的过程介绍">1. 编译型源码-可执行程序的过程介绍</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n100"><a class="md-toc-inner" href="#2-cc代码编译构建过程">2. C/C++代码编译构建过程</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n135"><a class="md-toc-inner" href="#3-cc代码迁移典型移植类问题">3. C/C++代码迁移典型移植类问题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n136"><a class="md-toc-inner" href="#31-代码迁移---编译脚本编译选项移植">3.1 代码迁移—编译脚本、编译选项移植</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n139"><a class="md-toc-inner" href="#32代码迁移---编译宏移植">3.2代码迁移—编译宏移植</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n142"><a class="md-toc-inner" href="#33-代码迁移---builtin函数移植">3.3 代码迁移—builtin函数移植</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n150"><a class="md-toc-inner" href="#34代码迁移---内联汇编函数移植">3.4代码迁移—内联汇编函数移植</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n153"><a class="md-toc-inner" href="#35-代码迁移---sse-intrinsic函数移植simd技术简介">3.5 代码迁移—SSE intrinsic函数移植(SIMD技术简介)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n163"><a class="md-toc-inner" href="#4-迁移工具---porting-advisor初步代码扫描">4. 迁移工具—Porting Advisor初步代码扫描</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n167"><a class="md-toc-inner" href="#总结">总结</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n170"><a class="md-toc-inner" href="#四-javapython代码迁移">四. Java/Python代码迁移</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n171"><a class="md-toc-inner" href="#1-java源码迁移修改">1. java源码迁移修改</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n174"><a class="md-toc-inner" href="#2-x86的so库迁移">2. x86的so库迁移</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n190"><a class="md-toc-inner" href="#3-netty-all-4134finaljar案例迁移">3. netty-all-4.1.34.Final.jar案例迁移</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n206"><a class="md-toc-inner" href="#五-maven仓库分类">五. Maven仓库分类</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n209"><a class="md-toc-inner" href="#1-本地仓库">1. 本地仓库</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n214"><a class="md-toc-inner" href="#2-远程仓库">2. 远程仓库</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n219"><a class="md-toc-inner" href="#3-中央仓库">3. 中央仓库</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n224"><a class="md-toc-inner" href="#4-鲲鹏maven仓">4. 鲲鹏Maven仓</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n236"><a class="md-toc-inner" href="#六-软件包迁移rpm包">六. 软件包迁移(rpm包)</a></span></p></div><h1 id='鲲鹏软件迁移实践'><span>鲲鹏软件迁移实践</span></h1><h2 id='一-概述'><span>一. 概述</span></h2><blockquote><p><span>软件迁移的原因：X86上cpu指令是变长的(有24位，也有16位的)，而鲲鹏cpu指令集是定长的(32位)。同时寄存器上也有很大差别。cpu指令集的差异导致在x86处理器上编译的软件无法在鲲鹏处理器上运行。所以需要进行软件迁移。</span></p></blockquote><ol start='' ><li><p><a href='https://z3.ax1x.com/2021/10/30/5xzVPg.png'><span>软件执行过程：</span></a></p><p><a href='https://imgtu.com/i/5xzVPg'><img src="https://z3.ax1x.com/2021/10/30/5xzVPg.png" alt="5xzVPg.png" style="zoom: 67%;" /></a></p><blockquote><ol start='' ><li><span>物理材料和晶体管实现门电路/寄存器，组成cpu的微架构。</span></li><li><span>cpu指令集是软硬件的接口，程序通过指令集中定义的指令驱动硬件完成计算。</span></li></ol></blockquote></li><li><p><a href='https://z3.ax1x.com/2021/10/30/5zSy7V.png'><span>鲲鹏处理器与X86处理器指令差异:</span></a></p><p><a href='https://imgtu.com/i/5zSy7V'><img src="https://z3.ax1x.com/2021/10/30/5zSy7V.png" alt="5zSy7V.png" style="zoom: 67%;" /></a></p></li></ol><h2 id='二-软件迁移五大步骤'><span>二. 软件迁移五大步骤</span></h2><h3 id='1-迁移准备'><span>1. 迁移准备</span></h3><ul><li><p><span>信息收集</span></p><ul><li><p><span>软件信息</span></p><blockquote><p><span>收集是否为商业软件或者自研软件</span></p><p><span>收集中间件/编译器</span></p><p><span>分析操作系统/虚拟机</span></p></blockquote></li><li><p><span>硬件信息</span></p><blockquote><p><span>如芯片/服务器等信息用来提供对标的鲲鹏服务器。</span></p></blockquote></li></ul></li><li><p><span>环境申请</span></p><blockquote><p><span>Openlab远程环境，一站式迁移调优</span></p></blockquote></li></ul><h3 id='2-迁移分析'><span>2. 迁移分析</span></h3><ul><li><p><span>软件栈分析</span></p></li><li><p><span>编程语言/代码/依赖库分析</span></p><p><a href='https://z3.ax1x.com/2021/10/30/5zCHA0.png'><span>迁移分析：</span></a></p><p><a href='https://imgtu.com/i/5zCHA0'><img src="https://z3.ax1x.com/2021/10/30/5zCHA0.png" alt="5zCHA0.png" style="zoom: 67%;" /></a></p></li></ul><h3 id='3-编译迁移'><span>3. 编译迁移</span></h3><ul><li><p><span>代码迁移</span></p></li><li><p><span>软件包迁移</span></p><p><a href='https://z3.ax1x.com/2021/10/30/5zPSBR.png'><span>编译迁移：</span></a></p><p><a href='https://imgtu.com/i/5zPSBR'><img src="https://z3.ax1x.com/2021/10/30/5zPSBR.png" referrerpolicy="no-referrer" alt="5zPSBR.png"></a></p></li></ul><h3 id='4-性能调优'><span>4. 性能调优</span></h3><ul><li><p><span>性能指标测试</span></p></li><li><p><span>性能优化</span></p><p><a href='https://z3.ax1x.com/2021/10/30/5zPi4K.png'><span>性能调优：</span></a></p><p><a href='https://imgtu.com/i/5zPi4K'><img src="https://z3.ax1x.com/2021/10/30/5zPi4K.png" referrerpolicy="no-referrer" alt="5zPi4K.png"></a></p></li></ul><h3 id='5-测试与认证'><span>5. 测试与认证</span></h3><ul><li><p><span>功能测试</span></p><blockquote><p><span>测试业务基本功能在鲲鹏上运行是否正常，含单元测试及系统集成测试。</span></p></blockquote></li><li><p><span>性能测试</span></p><blockquote><p><span>测试业务性能表现是否符合目标，同时监测各系统指标是否正常。</span></p></blockquote></li><li><p><span>长稳测试</span></p><blockquote><p><span>长时间运行测试程序，以检测业务能否长期稳定运行。</span></p></blockquote></li><li><p><span>认证</span></p><blockquote><p><span>完成以上步骤可获得鲲鹏展翅认证。</span></p></blockquote></li></ul><h2 id='三-cc代码迁移'><span>三. C/C++代码迁移</span></h2><h3 id='1-编译型源码-可执行程序的过程介绍'><span>1. 编译型源码-可执行程序的过程介绍</span></h3><ul><li><p><span>C/C++代码需要移植的原因</span></p><ul><li><span>架构差异:X86和鲲鹏处理器(aarch64)属于不同的架构。</span></li><li><span>指令集差异:X86--复杂指令集，鲲鹏处理器--精简指令集。</span></li><li><span>向量寄存器差异:X86和鲲鹏处理器使用向量寄存器不同，向量指令集也存在差异。</span></li></ul></li><li><p><span>编译型语言编译概述：</span></p><blockquote><p><span>编译型语言: 典型的如C/C++/Go语言，都属于编译型语言。编译型语言开发的程序在从x86处理器迁移到鲲鹏处理器时，必须经过重新编译才能运行。</span></p><p><span>从源码到程序的过程: 源码需要由编译器、汇编器翻译成机器指令，再通过链接器链接库函数生成机器语言程序。</span></p></blockquote><p><a href='https://z3.ax1x.com/2021/10/30/5zmnbD.png'><span>源码到程序执行过程：</span></a></p><p><a href='https://imgtu.com/i/5zmnbD'><img src="https://z3.ax1x.com/2021/10/30/5zmnbD.png" referrerpolicy="no-referrer" alt="5zmnbD.png"></a></p></li></ul><h3 id='2-cc代码编译构建过程'><span>2. C/C++代码编译构建过程</span></h3><ul><li><p><span>编译步骤</span></p><blockquote><p><span>1、获取源码:通过github或第三方开源社区获取</span></p><p><span>2、准备编译环境:安装编译器gcc等</span></p><p><span>3、使用源码中的CMakeLists.txt或configure脚本生成makefile</span></p><p><span>4、执行makefile编译可执行程序</span>
+<span>5、替换依赖库:重编译或替换依赖X86平台的so库</span>
+<span>6、将可执行程序安装部署到生产或测试系统</span></p></blockquote></li><li><p><span>C/C++代码工程主要包括两类文件：编译构建脚本、C/C++源码</span></p></li></ul><figure><table><thead><tr><th style='text-align:center;' ><span>编译构建脚本</span></th><th style='text-align:center;' ><span>C/C++源码</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Makefile</span></td><td style='text-align:center;' ><span>src</span></td></tr><tr><td style='text-align:center;' ><span>CmakeLists.txt</span></td><td style='text-align:center;' ><span>examples</span></td></tr><tr><td style='text-align:center;' ><span>configure</span></td><td style='text-align:center;' ><span>tests</span></td></tr><tr><td style='text-align:center;' ><span>autogen.sh</span></td><td style='text-align:center;' >&nbsp;</td></tr><tr><td style='text-align:center;' ><span>bootstrap.sh</span></td><td style='text-align:center;' >&nbsp;</td></tr></tbody></table></figure><blockquote><p><span>编译构建脚本文件涉及到的问题：编译选项的移植（指定数据类型、生成代码特性目标执行器架构、处理器硬件加速功能等)</span></p><p><span>C/C++源码文件：1. 编译宏移植用户自定义宏移植、编译器自定义宏移植)编译器自带builtin函数移植</span></p><p><span>							</span><span>  2.内联汇编移植</span></p><p><span>							</span><span>  3.SSE intrinsic函数移植（MMX/SSE类函数移植、AVX函数移植)</span></p></blockquote><h3 id='3-cc代码迁移典型移植类问题'><span>3. C/C++代码迁移典型移植类问题</span></h3><h4 id='31-代码迁移---编译脚本编译选项移植'><span>3.1 代码迁移—编译脚本、编译选项移植</span></h4><p><a href='https://z3.ax1x.com/2021/10/30/5zuEnK.png'><span>编译脚本、编译选项移植例子：</span></a></p><p><a href='https://imgtu.com/i/5zuEnK'><img src="https://z3.ax1x.com/2021/10/30/5zuEnK.png" referrerpolicy="no-referrer" alt="5zuEnK.png"></a></p><h4 id='32代码迁移---编译宏移植'><span>3.2代码迁移—编译宏移植</span></h4><p><a href='https://z3.ax1x.com/2021/10/30/5zuJHS.png'><span>编译宏移植：</span></a></p><p><a href='https://imgtu.com/i/5zuJHS'><img src="https://z3.ax1x.com/2021/10/30/5zuJHS.png" referrerpolicy="no-referrer" alt="5zuJHS.png"></a></p><h4 id='33-代码迁移---builtin函数移植'><span>3.3 代码迁移—builtin函数移植</span></h4><ul><li><p><span>builtin函数简介</span></p><blockquote><p><span>GCC提供了一系列的builtin函数，可以实现一些简单快捷的功能来方便程序编写，另外，很多builtin函数可用来优化编译结果。</span></p></blockquote></li></ul><p><a href='https://z3.ax1x.com/2021/10/30/5zKA8s.png'><span>builtin函数移植：</span></a></p><p><a href='https://imgtu.com/i/5zKA8s'><img src="https://z3.ax1x.com/2021/10/30/5zKA8s.png" referrerpolicy="no-referrer" alt="5zKA8s.png"></a></p><h4 id='34代码迁移---内联汇编函数移植'><span>3.4代码迁移—内联汇编函数移植</span></h4><p><a href='https://z3.ax1x.com/2021/10/30/5zMTte.png'><span>内联汇编函数移植：</span></a></p><p><a href='https://imgtu.com/i/5zMTte'><img src="https://z3.ax1x.com/2021/10/30/5zMTte.png" referrerpolicy="no-referrer" alt="5zMTte.png"></a></p><h4 id='35-代码迁移---sse-intrinsic函数移植simd技术简介'><span>3.5 代码迁移—SSE intrinsic函数移植(SIMD技术简介)</span></h4><ul><li><p><span>简介</span></p><blockquote><p><span>SIMD(Single Instruction Multi Data)是一种单指令处理多数据流的并行处理技术，能够在批晕数据操作时进行向量化运算加速，具有较高的执行效率，在多媒体处理、矩阵运算等场景都有广泛的应用。</span></p></blockquote></li><li><p><span>intrinsic函数移植(MMX/SSE)</span></p><p><a href='https://z3.ax1x.com/2021/10/30/5zQvvR.png'><span>intrinsic函数移植：</span></a></p><p><a href='https://imgtu.com/i/5zQvvR'><img src="https://z3.ax1x.com/2021/10/30/5zQvvR.png" referrerpolicy="no-referrer" alt="5zQvvR.png"></a></p></li></ul><h3 id='4-迁移工具---porting-advisor初步代码扫描'><span>4. 迁移工具—Porting Advisor初步代码扫描</span></h3><blockquote><p><span>鲲鹏代码迁移工具支持IDE插件(VSCode、IntelliJ)和浏览器两种Client工作模式，分别同迁移Server一起完成扫描分析和代码迁移任务。</span></p><p><span>本工具可自动扫描并分析待迁移软件，提供可迁移性评估报告;也可对待迁移软件进行源码分析，准确定位需迁移的代码，并给出友好的迁移指导或一键代码替换;同时支持将x86软件包重构成鲲鹏平台软件包、专项软件一键迁移及其他增强功能等。本工具仅适用于开发和测试环境。仅支持x86 Linux软件迁移到鲲鹏Linux上的扫描、分析与迁移。</span></p></blockquote><h3 id='总结'><span>总结</span></h3><p><a href='https://z3.ax1x.com/2021/10/30/5zl6MR.png'><span>本章小结：</span></a></p><p><a href='https://imgtu.com/i/5zl6MR'><img src="https://z3.ax1x.com/2021/10/30/5zl6MR.png" referrerpolicy="no-referrer" alt="5zl6MR.png"></a></p><h2 id='四-javapython代码迁移'><span>四. Java/Python代码迁移</span></h2><h4 id='1-java源码迁移修改'><span>1. java源码迁移修改</span></h4><p><a href='https://z3.ax1x.com/2021/10/30/5zw7lV.png'><span>java源码迁移修改：</span></a></p><p><span>																				</span><a href='https://imgtu.com/i/5zw7lV'><img src="https://z3.ax1x.com/2021/10/30/5zw7lV.png" alt="5zw7lV.png" style="zoom:50%;" /></a></p><h4 id='2-x86的so库迁移'><span>2. x86的so库迁移</span></h4><blockquote><p><span>步骤：</span></p><ol start='' ><li><span>Porting Advisor工具分析扫描jar识别依赖SO库</span></li><li><span>下载SO库源码</span></li><li><span>安装maven</span></li><li><span>安装GCC</span></li><li><span>设置参数-fsigned-char编译aarch64版本SO库替换SO库</span></li><li><span>重新打包iar文件</span></li></ol></blockquote><h4 id='3-netty-all-4134finaljar案例迁移'><span>3. netty-all-4.1.34.Final.jar案例迁移</span></h4><blockquote><ol start='' ><li><p><span>代码迁移工具(Porting Advisor)扫描结果，有1个依赖SО库需要移植</span></p></li><li><p><span>将jar包中调用的.so厍重新编译替换为aarch64版本，并重新打jar包(mvn自动完成)</span></p><ul><li><span>安装GCC，设置参数-fsigned-char安装maven</span></li><li><span>安装OpenJDK</span></li><li><span>下载netty-all-4.1.34和依赖netty-tcnative-2.0.22解压netty-tcnative-2.0.22，并编译(mvn install)解压netty-all-4.1.34，并编译(mvn install)</span></li><li><span>编译生成的jar包解压后确认已经包含aarch64的SO库</span></li></ul></li></ol></blockquote><h2 id='五-maven仓库分类'><span>五. Maven仓库分类</span></h2><blockquote><p><span>Maven仓库可以分为三大类：本地仓库、远程仓库、中央仓库。</span></p></blockquote><h3 id='1-本地仓库'><span>1. 本地仓库</span></h3><blockquote><p><span>存储在本地磁盘，默认在${user.home}/.m2下。</span></p><p><span>本地仓库找到，直接返回。</span></p><p><span>本地仓库没有找到,去远程仓库搜索。</span></p></blockquote><h3 id='2-远程仓库'><span>2. 远程仓库</span></h3><blockquote><p><span>一般使用国内镜像或者公司自己搭建私服，可以加快jar包下载速度。</span></p><p><span>没有配置远程仓库，去中央仓库搜索。</span></p><p><span>远程仓库找到，下载到本地仓库远程仓库没有找到，搜索下一个远程仓，依次类推，如果所有远程仓都未找到,搜索中央仓。</span></p></blockquote><h3 id='3-中央仓库'><span>3. 中央仓库</span></h3><blockquote><p><span>Maven团队维护的jar包仓库</span></p><p><span>网址: </span><a href='https://repo1.maven.org/maven2/' target='_blank' class='url'>https://repo1.maven.org/maven2/</a></p><p><span>中央仓库找到，下载到本地仓库中央仓库没有找到，前台打印错误信息</span></p></blockquote><h3 id='4-鲲鹏maven仓'><span>4. 鲲鹏Maven仓</span></h3><blockquote><p><span>前面已了解Maven仓库搜索顺序，可以将鲲鹏Maven远程仓库放在首位，以便Maven优先下载鲲鹏平台jar包。由于鲲鹏Maven仓只放了arm相关jar，所以jar包不全，可以配置第二个Maven远程仓库，当鲲鹏Maven仓搜索不到时，会自动搜索下一个Maven远程仓库。</span></p></blockquote><ul><li><p><span>配置方法</span></p><blockquote><ol start='' ><li><span>编辑配置文件${maven.home}/conf/settings.xml</span></li><li><span>profiles标签下增加鲲鹏Maven仓</span></li></ol></blockquote></li></ul><h2 id='六-软件包迁移rpm包'><span>六. 软件包迁移(rpm包)</span></h2><ul><li><p><span>rpm包简介</span></p><blockquote><p><span>RPM（RedHat Package Manager），Rethat软件包管理工具，类似windows里面的setup.exe是Linux这系列操作系统里面的打包安装工具，它虽然是RedHat的标志，但是其原始设计理念是开放式的，</span>
+<span>包括OpenLinux、S.u.S.E.以及Turbo Linux等Linux的分发版本都有采用，可以算是公认的行业标准了。</span></p></blockquote></li><li><p><span>rpm重构</span></p><p><a href='https://z3.ax1x.com/2021/10/30/5zwtsO.png'><span>重构流程：</span></a></p><p><a href='https://imgtu.com/i/5zwtsO'><img src="https://z3.ax1x.com/2021/10/30/5zwtsO.png" referrerpolicy="no-referrer" alt="5zwtsO.png"></a></p></li></ul><p>&nbsp;</p></div></div>
+</body>
+</html>
